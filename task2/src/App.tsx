@@ -1,35 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Card from './Card';
+
+const products = [
+  { id: 101, name: "Laptop", price: 999 },
+  { id: 102, name: "Mouse", price: 25 },
+  { id: 103, name: "Keyboard", price: 50 }
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h2>Product Catalog</h2>
+      {/* Мапим продукты, используя наш компонент Card */}
+      {products.map((product) => (
+        <Card key={product.id} title={product.name}>
+          <p>Price: ${product.price}</p>
+        </Card>
+      ))}
     </>
-  )
+  );
 }
-
-export default App
